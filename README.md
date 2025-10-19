@@ -1,8 +1,8 @@
-# TGN Gen 2.5 (CIFAR-100)
+ï»¿# TGN Gen 2.5 (CIFAR-100)
 
 Sharpened hierarchical classifier for CIFAR-100: SAM + EMA tuned, MixUp ready, dashboard included.
 
-![](https://dummyimage.com/900x320/111827/ffffff&text=Taxonomic+Gated+Network+Gen+2.5)
+![TGN illustration](https://dummyimage.com/900x320/111827/ffffff&text=Taxonomic+Gated+Network+Gen+2.5)
 
 ---
 
@@ -29,21 +29,27 @@ These numbers were obtained with SAM (`rho=0.05`), EMA (`0.9999`), MixUp (alpha 
 
 ---
 
-
 ### Git LFS requirement
 This repository stores the checkpoint with [Git LFS](https://git-lfs.com/). Install it first:
-```bash
+```
 git lfs install
 git lfs pull
 ```
+
 ## Quick Start
 
-```bash
+```
 # Install dependencies (example with uv)
 uv pip install torch torchvision torch-ema
 
-# Kick off training (150 epochs, resume if checkpoint exists)
-uv run python train_tgn2_5.py --epochs 150 --use-sam --warmup-epochs 10 --resume auto
+# Kick off training (150 epochs)
+uv run python train_tgn2_5.py --epochs 150 --use-sam --warmup-epochs 10
+```
+
+To resume from the included checkpoint:
+
+```
+uv run python train_tgn2_5.py --resume TGN-cifar-100/tgn_gen2_5_best.pt
 ```
 
 Live metrics stream to http://localhost:8891/dashboard.html.
@@ -89,6 +95,6 @@ Checkpoints are stored in `checkpoints_tgn_gen2_5/` by default. SAM/EMA stay ena
 
 ## Contribute / Extend
 
-This release is a clean baseline. Fork it, swap in ConvNeXt or Swin trunks, add prototypes, or experiment with contrastive objectives—and let us know how far you push Gen 2.5.
+This release is a clean baseline. Fork it, swap in ConvNeXt or Swin trunks, add prototypes, or experiment with contrastive objectives - and let us know how far you push Gen 2.5.
 
 Happy training!
